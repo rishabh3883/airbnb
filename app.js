@@ -25,9 +25,9 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/airbnb";
+const dbUrl = "mongodb://127.0.0.1:27017/airbnb";
 
-const dbUrl = process.env.ATLASDB_URL
+//const dbUrl = process.env.ATLASDB_URL
 
 
 main().then(() => {
@@ -129,6 +129,6 @@ app.use((err,req,res,next)=>{
 });
 
 
-app.listen(8080, ()=>{
+app.listen(3000, ()=>{
     console.log("working");
 });

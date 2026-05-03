@@ -2,8 +2,6 @@ if(process.env.NODE_ENV !="production"){
     require('dotenv').config();
 }
 
-console.log(process.env.Secret);
-
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -25,9 +23,7 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
 
-const dbUrl = "mongodb://127.0.0.1:27017/airbnb";
-
-//const dbUrl = process.env.ATLASDB_URL
+const dbUrl = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/airbnb";
 
 
 main().then(() => {
@@ -59,7 +55,7 @@ const store = MongoStore.create({
 });
 
 
-store.on("error",()=>{
+store.on("error",(err)=>{
    console.log("ERROR in MONGO SESION STORE",err);
 });
 
@@ -129,6 +125,10 @@ app.use((err,req,res,next)=>{
 });
 
 
-app.listen(3000, ()=>{
-    console.log("working");
-});
+if (require.main === module) {
+    app.listen(3000, () => {
+        console.log("working");
+    });
+}
+
+module.exports = app;

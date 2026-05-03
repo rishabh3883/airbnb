@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
-const { isLoggedin,isOwner,validateList} = require("../middleware.js");
+const { isLoggedin,isOwner,validateList} = require("../expressMiddleware.js");
 const listingController = require("../controllers/listings.js");
 const multer  = require('multer');
 const {storage} = require("../cloudconfig.js")

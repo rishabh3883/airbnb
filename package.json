@@ -1,6 +1,9 @@
 {
   "engines": {
-    "node": "22.12.0"
+    "node": "22.x"
+  },
+  "scripts": {
+    "start": "node app.js"
   },
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.16.2",
